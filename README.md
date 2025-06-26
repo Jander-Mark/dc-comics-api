@@ -142,10 +142,10 @@ A aplicação backend segue o padrão MVC (Model-View-Controller) com as seguint
 
 ### Enum Alinhamento
 
-- 'HERÓI' - Herói
-- 'VILÃO' - Vilão
-- 'ANTI_HERÓI' - Anti-Herói
-- 'NEUTRO' - Neutro
+- `HERÓI` - Herói
+- `VILÃO` - Vilão
+- `ANTI_HERÓI` - Anti-Herói
+- `NEUTRO` - Neutro
 
 ## 🔧 Pré-requisitos
 
