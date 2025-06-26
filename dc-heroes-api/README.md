@@ -352,6 +352,6 @@ spring.web.cors.allowed-origins=*
 spring.web.cors.allowed-methods=GET,POST,PUT,DELETE,OPTIONS
 spring.web.cors.allowed-headers=*
 ```
-**Desenvolvido usando Spring Boot**
----
 
+---
+**Desenvolvido usando Spring Boot**
