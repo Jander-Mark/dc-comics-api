@@ -5,6 +5,9 @@ import {
   StatusPersonagem, 
   STATUS_LABELS, 
   STATUS_COLORS, 
+  Alinhamento,             // <-- ADICIONADO
+  ALINHAMENTO_LABELS,      // <-- ADICIONADO
+  ALINHAMENTO_COLORS,      // <-- ADICIONADO
   criarPersonagemVazio, 
   validarPersonagem,
   AFILIACOES_COMUNS,
@@ -19,7 +22,8 @@ function App() {
   const [error, setError] = useState(null);
   const [busca, setBusca] = useState('');
   const [filtroStatus, setFiltroStatus] = useState('');
-  
+  const [filtroAlinhamento, setFiltroAlinhamento] = useState(''); // <-- ADICIONADO
+
   // Estados para modais
   const [modalAberto, setModalAberto] = useState(false);
   const [modalTipo, setModalTipo] = useState(''); // 'adicionar', 'editar', 'visualizar'
@@ -39,7 +43,7 @@ function App() {
   // Filtrar personagens quando busca ou filtro mudam
   useEffect(() => {
     filtrarPersonagens();
-  }, [personagens, busca, filtroStatus]);
+  }, [personagens, busca, filtroStatus, filtroAlinhamento]); // <-- ADICIONADO filtroAlinhamento
 
   const carregarPersonagens = async () => {
     try {
@@ -66,6 +70,11 @@ function App() {
 
     if (filtroStatus) {
       resultado = resultado.filter(p => p.status === filtroStatus);
+    }
+
+    // <-- LÓGICA DE FILTRO ADICIONADA -->
+    if (filtroAlinhamento) {
+        resultado = resultado.filter(p => p.alinhamento === filtroAlinhamento);
     }
 
     setPersonagensFiltrados(resultado);
@@ -107,7 +116,6 @@ function App() {
       [campo]: valor
     }));
     
-    // Limpar erro do campo quando usuário digita
     if (errosValidacao[campo]) {
       setErrosValidacao(prev => ({
         ...prev,
@@ -122,22 +130,16 @@ function App() {
 
     try {
       setUploadingImagem(true);
-      
-      // Validar arquivo
       personagemService.validarArquivoImagem(arquivo);
       
-      // Criar preview local primeiro
       const reader = new FileReader();
       reader.onload = (e) => setPreviewImagem(e.target.result);
       reader.readAsDataURL(arquivo);
       
-      // Fazer upload para o servidor
       const resultado = await personagemService.uploadImagem(arquivo);
       
-      // Atualizar form com URL da imagem retornada pelo servidor
       handleInputChange('imagemUrl', resultado.url);
       
-      // Atualizar preview com a URL do servidor para garantir que está funcionando
       setTimeout(() => {
         const urlCompleta = personagemService.getImagemUrl(resultado.url);
         setPreviewImagem(urlCompleta);
@@ -154,7 +156,6 @@ function App() {
 
   const salvarPersonagem = async () => {
     try {
-      // Validar dados
       const validacao = validarPersonagem(personagemForm);
       if (!validacao.valido) {
         setErrosValidacao(validacao.erros);
@@ -197,6 +198,7 @@ function App() {
   const limparFiltros = () => {
     setBusca('');
     setFiltroStatus('');
+    setFiltroAlinhamento(''); // <-- ADICIONADO
   };
 
   const calcularEstatisticas = () => {
@@ -263,8 +265,8 @@ function App() {
       {/* Filtros */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="bg-white p-4 rounded-lg shadow">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="sm:col-span-2 md:col-span-1">
               <input
                 type="text"
                 placeholder="Buscar por nome..."
@@ -277,10 +279,23 @@ function App() {
               <select
                 value={filtroStatus}
                 onChange={(e) => setFiltroStatus(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Todos os status</option>
                 {Object.entries(STATUS_LABELS).map(([key, label]) => (
+                  <option key={key} value={key}>{label}</option>
+                ))}
+              </select>
+            </div>
+            {/* <-- FILTRO DE ALINHAMENTO ADICIONADO --> */}
+            <div>
+              <select
+                value={filtroAlinhamento}
+                onChange={(e) => setFiltroAlinhamento(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">Todos os alinhamentos</option>
+                {Object.entries(ALINHAMENTO_LABELS).map(([key, label]) => (
                   <option key={key} value={key}>{label}</option>
                 ))}
               </select>
@@ -336,6 +351,14 @@ function App() {
                   <div className="w-full h-full flex items-center justify-center text-gray-400" style={{display: personagem.imagemUrl ? 'none' : 'flex'}}>
                     <span className="text-4xl">🦸</span>
                   </div>
+
+                  {/* <-- TAG DE ALINHAMENTO ADICIONADA AO CARD --> */}
+                  {personagem.alinhamento && (
+                    <div className={`absolute top-2 left-2 px-2 py-1 rounded-full text-xs font-medium ${ALINHAMENTO_COLORS[personagem.alinhamento]}`}>
+                      {ALINHAMENTO_LABELS[personagem.alinhamento]}
+                    </div>
+                  )}
+
                   <div className={`absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-medium ${STATUS_COLORS[personagem.status]}`}>
                     {STATUS_LABELS[personagem.status]}
                   </div>
@@ -460,6 +483,13 @@ function App() {
                       <label className="block text-sm font-medium text-gray-700">Status</label>
                       <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${STATUS_COLORS[personagemSelecionado.status]}`}>
                         {STATUS_LABELS[personagemSelecionado.status]}
+                      </span>
+                    </div>
+                    {/* <-- VISUALIZAÇÃO DE ALINHAMENTO ADICIONADA --> */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">Alinhamento</label>
+                      <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${ALINHAMENTO_COLORS[personagemSelecionado.alinhamento]}`}>
+                        {ALINHAMENTO_LABELS[personagemSelecionado.alinhamento]}
                       </span>
                     </div>
                   </div>
@@ -597,7 +627,7 @@ function App() {
                     </div>
 
                     {/* Status */}
-                    <div className="md:col-span-2">
+                    <div>
                       <label className="block text-sm font-medium text-gray-700">Status</label>
                       <select
                         value={personagemForm.status}
@@ -610,6 +640,24 @@ function App() {
                       </select>
                       {errosValidacao.status && <p className="text-red-500 text-sm mt-1">{errosValidacao.status}</p>}
                     </div>
+
+                    {/* <-- CAMPO DE ALINHAMENTO ADICIONADO AO FORMULÁRIO --> */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Alinhamento *</label>
+                        <select
+                            value={personagemForm.alinhamento}
+                            onChange={(e) => handleInputChange('alinhamento', e.target.value)}
+                            className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${errosValidacao.alinhamento ? 'border-red-500' : 'border-gray-300'}`}
+                            required
+                        >
+                            <option value="" disabled>Selecione um alinhamento</option>
+                            {Object.entries(ALINHAMENTO_LABELS).map(([key, label]) => (
+                                <option key={key} value={key}>{label}</option>
+                            ))}
+                        </select>
+                        {errosValidacao.alinhamento && <p className="text-red-500 text-sm mt-1">{errosValidacao.alinhamento}</p>}
+                    </div>
+
                   </div>
 
                   {/* Poderes */}
@@ -666,4 +714,3 @@ function App() {
 }
 
 export default App;
-

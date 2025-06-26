@@ -5,6 +5,14 @@ export const StatusPersonagem = {
   MORTO: 'MORTO'
 };
 
+// --- Bloco de código para Alinhamento ---
+export const Alinhamento = {
+    HEROI: 'HEROI',
+    VILAO: 'VILAO',
+    ANTI_HEROI: 'ANTI_HEROI',
+    NEUTRO: 'NEUTRO',
+};
+
 // Constantes para afiliações comuns
 export const AFILIACOES_COMUNS = [
   'Liga da Justiça',
@@ -65,6 +73,21 @@ export const STATUS_COLORS = {
   [StatusPersonagem.MORTO]: 'bg-red-100 text-red-800'
 };
 
+// --- Labels e Cores para Alinhamento ---
+export const ALINHAMENTO_LABELS = {
+    [Alinhamento.HEROI]: 'Herói',
+    [Alinhamento.VILAO]: 'Vilão',
+    [Alinhamento.ANTI_HEROI]: 'Anti-herói',
+    [Alinhamento.NEUTRO]: 'Neutro',
+};
+
+export const ALINHAMENTO_COLORS = {
+    [Alinhamento.HEROI]: 'bg-sky-100 text-sky-800',
+    [Alinhamento.VILAO]: 'bg-rose-200 text-rose-900',
+    [Alinhamento.ANTI_HEROI]: 'bg-purple-200 text-purple-900',
+    [Alinhamento.NEUTRO]: 'bg-gray-200 text-gray-800',
+};
+
 // Função para criar um personagem vazio
 export const criarPersonagemVazio = () => ({
   nome: '',
@@ -76,7 +99,8 @@ export const criarPersonagemVazio = () => ({
   primeiraAparicao: '',
   status: StatusPersonagem.ATIVO,
   descricao: '',
-  imagemUrl: ''
+  imagemUrl: '',
+  alinhamento: '' // <-- Campo adicionado
 });
 
 // Função para validar personagem
@@ -124,10 +148,14 @@ export const validarPersonagem = (personagem) => {
   if (!personagem.status || !Object.values(StatusPersonagem).includes(personagem.status)) {
     erros.status = 'Status é obrigatório e deve ser válido';
   }
+
+  // --- Validação para Alinhamento ---
+  if (!personagem.alinhamento || !Object.values(Alinhamento).includes(personagem.alinhamento)) {
+      erros.alinhamento = 'Alinhamento é obrigatório e deve ser válido';
+  }
   
   return {
     valido: Object.keys(erros).length === 0,
     erros
   };
 };
-

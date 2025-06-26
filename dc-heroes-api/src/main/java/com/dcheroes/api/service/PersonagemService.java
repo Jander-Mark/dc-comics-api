@@ -42,6 +42,7 @@ public class PersonagemService {
                     personagem.setPrimeiraAparicao(personagemAtualizado.getPrimeiraAparicao());
                     personagem.setStatus(personagemAtualizado.getStatus());
                     personagem.setDescricao(personagemAtualizado.getDescricao());
+                    personagem.setAlinhamento(personagemAtualizado.getAlinhamento());
                     personagem.setImagemUrl(personagemAtualizado.getImagemUrl());
                     return personagemRepository.save(personagem);
                 })
