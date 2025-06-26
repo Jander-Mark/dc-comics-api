@@ -173,7 +173,7 @@ Siga os passos abaixo para configurar e executar a aplicação completa.
 ### 1. Clone o repositório
 
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/Jander-Mark/dc-comics-api
 cd dc-heroes-fullstack
 ```
 
