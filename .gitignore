@@ -1,0 +1,20 @@
+# Backend (Node.js ou Spring Boot)
+node_modules/
+dist/
+build/
+target/
+.env
+*.log
+uploads/
+
+# Frontend (React ou Vue)
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# Editor e sistema
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
