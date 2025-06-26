@@ -406,5 +406,5 @@ const API_BASE_URL = 'http://localhost:8080/api';
 
 ---
 
-**Desenvolvido com usando React + TailwindCSS**
+**Desenvolvido usando React + TailwindCSS**
 
