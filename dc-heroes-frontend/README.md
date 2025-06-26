@@ -133,6 +133,7 @@ Abra seu navegador e acesse http://localhost:5173
 Cada card exibe:
 - **Nome** e **Nome Real**
 - **Status** com badge colorido
+- **Alinhamento** com badge colorido
 - **Origem** e **Afiliação**
 - **Primeira Aparição**
 - **Poderes** (resumido)
@@ -143,6 +144,12 @@ Cada card exibe:
 - **Ativo**: Verde (bg-green-100 text-green-800)
 - **Inativo**: Amarelo (bg-yellow-100 text-yellow-800)
 - **Morto**: Vermelho (bg-red-100 text-red-800)
+
+### Cores por Alinhamento
+- **Herói**: Azul
+- **Vilão**: Rosa/Vinho
+- **Anti-Herói**: Roxo
+- **Neutro**: Cinza
 
 ## 🔍 Funcionalidades Detalhadas
 
