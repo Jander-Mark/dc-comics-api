@@ -37,7 +37,7 @@ Este frontend foi desenvolvido como complemento à API RESTful de personagens da
 ### Desenvolvimento
 - **ESLint** - Linting de código
 - **PostCSS** - Processamento CSS
-- **pnpm** - Gerenciador de pacotes
+- **npm** - Gerenciador de pacotes
 
 ## 📁 Estrutura do Projeto
 
@@ -76,7 +76,7 @@ Antes de executar o projeto, certifique-se de ter:
 
 ```bash
 node --version
-pnpm --version
+npm --version
 ```
 
 ## 📥 Instalação e Execução
@@ -91,7 +91,7 @@ cd dc-heroes-frontend
 ### 2. Instale as dependências
 
 ```bash
-pnpm install
+npm install
 ```
 
 ### 3. Inicie a API Backend
@@ -364,20 +364,6 @@ pnpm run build
 # Pode ser servido por qualquer servidor estático
 ```
 
-## 🔮 Próximas Funcionalidades
-
-Funcionalidades planejadas para versões futuras:
-
-- [ ] **Modal de Detalhes**: Visualização completa do personagem
-- [ ] **Formulário de Criação**: Adicionar novos personagens
-- [ ] **Formulário de Edição**: Editar personagens existentes
-- [ ] **Confirmação de Exclusão**: Deletar personagens
-- [ ] **Busca Avançada**: Filtros por afiliação e origem
-- [ ] **Paginação**: Para grandes volumes de dados
-- [ ] **Ordenação**: Por nome, data, etc.
-- [ ] **Tema Escuro**: Toggle dark/light mode
-- [ ] **Favoritos**: Marcar personagens favoritos
-- [ ] **Exportação**: Download de dados em PDF/CSV
 
 ## 🤝 Integração com Backend
 
@@ -403,8 +389,6 @@ const API_BASE_URL = 'http://localhost:8080/api';
 }
 ```
 
-## 📞 Suporte
-
 ### Logs de Debug
 ```javascript
 // Console logs automáticos
@@ -419,21 +403,7 @@ const API_BASE_URL = 'http://localhost:8080/api';
 3. **Verifique o console do navegador**
 4. **Teste endpoints diretamente**
 
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](../LICENSE) para mais detalhes.
-
-## 👥 Contribuição
-
-Para contribuir com o projeto:
-
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
-
 ---
 
-**Desenvolvido com ❤️ usando React + TailwindCSS**
+**Desenvolvido com usando React + TailwindCSS**
 
