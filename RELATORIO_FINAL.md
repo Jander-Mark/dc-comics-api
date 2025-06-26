@@ -62,7 +62,4 @@ dc-heroes-api/
 ```
 ---
 
-**Data:** 12/06/2025  
-**Status:** Persistência resolvida, imagens em investigação  
-**Próxima revisão:** Foco na correção completa do upload de imagens
 
