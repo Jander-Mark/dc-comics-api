@@ -352,43 +352,6 @@ spring.web.cors.allowed-origins=*
 spring.web.cors.allowed-methods=GET,POST,PUT,DELETE,OPTIONS
 spring.web.cors.allowed-headers=*
 ```
-
-## 📈 Melhorias Futuras
-
-Possíveis melhorias para versões futuras:
-
-- [ ] Autenticação e autorização (Spring Security)
-- [ ] Paginação e ordenação de resultados
-- [ ] Cache com Redis
-- [ ] Banco de dados PostgreSQL para produção
-- [ ] Testes unitários e de integração
-- [ ] Docker e Docker Compose
-- [ ] CI/CD com GitHub Actions
-- [ ] Métricas com Actuator
-- [ ] Upload de imagens dos personagens
-- [ ] Versionamento da API
-
-## 👥 Contribuição
-
-Para contribuir com o projeto:
-
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 📞 Contato
-
-- **Equipe**: DC Heroes
-- **Email**: contato@dcheroes.com
-- **Website**: https://github.com/dcheroes/api
-
+**Desenvolvido usando Spring Boot**
 ---
-
-**Desenvolvido com ❤️ usando Spring Boot**
 
