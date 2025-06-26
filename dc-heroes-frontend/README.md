@@ -84,7 +84,8 @@ npm --version
 ### 1. Clone o repositório (se necessário)
 
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/Jander-Mark/dc-comics-api
+git clone 
 cd dc-heroes-frontend
 ```
 
