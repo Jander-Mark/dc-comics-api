@@ -4,13 +4,13 @@ import personagemService from './services/personagemService.js';
 import { 
   StatusPersonagem, 
   STATUS_LABELS, 
-  STATUS_COLORS, 
-  Alinhamento,             // <-- ADICIONADO
-  ALINHAMENTO_LABELS,      // <-- ADICIONADO
-  ALINHAMENTO_COLORS,      // <-- ADICIONADO
+  STATUS_COLORS,
+  Alinhamento, 
+  ALINHAMENTO_LABELS, 
+  ALINHAMENTO_COLORS, 
   criarPersonagemVazio, 
-  validarPersonagem,
-  AFILIACOES_COMUNS,
+  validarPersonagem, 
+  AFILIACOES_COMUNS, 
   ORIGENS_COMUNS,
   UNIVERSOS_COMUNS
 } from './types/personagem.js';
@@ -22,7 +22,7 @@ function App() {
   const [error, setError] = useState(null);
   const [busca, setBusca] = useState('');
   const [filtroStatus, setFiltroStatus] = useState('');
-  const [filtroAlinhamento, setFiltroAlinhamento] = useState(''); // <-- ADICIONADO
+  const [filtroAlinhamento, setFiltroAlinhamento] = useState('');
 
   // Estados para modais
   const [modalAberto, setModalAberto] = useState(false);
@@ -198,7 +198,7 @@ function App() {
   const limparFiltros = () => {
     setBusca('');
     setFiltroStatus('');
-    setFiltroAlinhamento(''); // <-- ADICIONADO
+    setFiltroAlinhamento(''); 
   };
 
   const calcularEstatisticas = () => {
@@ -287,7 +287,7 @@ function App() {
                 ))}
               </select>
             </div>
-            {/* <-- FILTRO DE ALINHAMENTO ADICIONADO --> */}
+            {/* <-- FILTRO DE ALINHAMENTO --> */}
             <div>
               <select
                 value={filtroAlinhamento}
@@ -485,7 +485,7 @@ function App() {
                         {STATUS_LABELS[personagemSelecionado.status]}
                       </span>
                     </div>
-                    {/* <-- VISUALIZAÇÃO DE ALINHAMENTO ADICIONADA --> */}
+                    {/* <-- VISUALIZAÇÃO DE ALINHAMENTO --> */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700">Alinhamento</label>
                       <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${ALINHAMENTO_COLORS[personagemSelecionado.alinhamento]}`}>

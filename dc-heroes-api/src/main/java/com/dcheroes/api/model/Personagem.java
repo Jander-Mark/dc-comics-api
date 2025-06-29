@@ -6,6 +6,12 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+/**
+ * Classe que representa um personagem da DC Comics.
+ * Esta entidade é mapeada para a tabela "personagens" no banco de dados.
+ * Contém informações detalhadas sobre o personagem, incluindo nome, origem, poderes, etc.
+ */
+
 @Entity
 @Table(name = "personagens")
 @Schema(description = "Entidade que representa um personagem da DC Comics")

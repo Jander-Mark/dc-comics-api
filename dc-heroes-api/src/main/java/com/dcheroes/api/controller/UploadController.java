@@ -33,6 +33,7 @@ public class UploadController {
     @Value("${app.upload.dir:uploads}")
     private String uploadDir;
 
+    // Endpoint para upload de imagem
     @PostMapping(value = "/imagem", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(summary = "Upload de imagem", description = "Faz upload de uma imagem para o servidor")
     @ApiResponses(value = {

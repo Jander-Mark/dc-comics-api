@@ -28,6 +28,7 @@ public class PersonagemController {
     @Autowired
     private PersonagemService personagemService;
     
+    // Lista todos os personagens cadastrados
     @Operation(summary = "Listar todos os personagens", description = "Retorna uma lista com todos os personagens cadastrados")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Lista de personagens retornada com sucesso",
@@ -39,6 +40,7 @@ public class PersonagemController {
         return ResponseEntity.ok(personagens);
     }
     
+    // Busca um personagem específico pelo ID
     @Operation(summary = "Buscar personagem por ID", description = "Retorna um personagem específico pelo seu ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Personagem encontrado",
@@ -53,6 +55,7 @@ public class PersonagemController {
                          .orElse(ResponseEntity.notFound().build());
     }
     
+    // Cria um novo personagem
     @Operation(summary = "Criar novo personagem", description = "Cria um novo personagem no sistema")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Personagem criado com sucesso",
@@ -71,6 +74,7 @@ public class PersonagemController {
         }
     }
     
+    // Atualiza um personagem existente pelo ID
     @Operation(summary = "Atualizar personagem", description = "Atualiza os dados de um personagem existente")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Personagem atualizado com sucesso",
@@ -93,6 +97,7 @@ public class PersonagemController {
         }
     }
     
+    // Deleta um personagem pelo ID
     @Operation(summary = "Deletar personagem", description = "Remove um personagem do sistema")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "204", description = "Personagem deletado com sucesso"),
@@ -109,6 +114,7 @@ public class PersonagemController {
         }
     }
     
+    // Busca personagens por nome
     @Operation(summary = "Buscar personagens por nome", description = "Busca personagens que contenham o nome especificado")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Lista de personagens encontrados",
@@ -122,6 +128,7 @@ public class PersonagemController {
         return ResponseEntity.ok(personagens);
     }
     
+    // Busca personagens por afiliação
     @Operation(summary = "Buscar personagens por afiliação", description = "Busca personagens de uma afiliação específica")
     @GetMapping("/afiliacao/{afiliacao}")
     public ResponseEntity<List<Personagem>> buscarPorAfiliacao(
@@ -130,6 +137,7 @@ public class PersonagemController {
         return ResponseEntity.ok(personagens);
     }
     
+    // Busca personagens por status
     @Operation(summary = "Buscar personagens por status", description = "Busca personagens com status específico")
     @GetMapping("/status/{status}")
     public ResponseEntity<List<Personagem>> buscarPorStatus(
@@ -138,6 +146,7 @@ public class PersonagemController {
         return ResponseEntity.ok(personagens);
     }
     
+    // Busca personagens por nome real
     @Operation(summary = "Buscar personagens por nome real", description = "Busca personagens pelo nome real")
     @GetMapping("/nome-real")
     public ResponseEntity<List<Personagem>> buscarPorNomeReal(
@@ -147,6 +156,7 @@ public class PersonagemController {
         return ResponseEntity.ok(personagens);
     }
     
+    // Busca personagens por local de origem
     @Operation(summary = "Buscar personagens por origem", description = "Busca personagens por local de origem")
     @GetMapping("/origem")
     public ResponseEntity<List<Personagem>> buscarPorOrigem(
@@ -156,6 +166,7 @@ public class PersonagemController {
         return ResponseEntity.ok(personagens);
     }
     
+    // Filtra personagens com múltiplos critérios: nome, afiliação e status
     @Operation(summary = "Filtrar personagens", description = "Busca personagens usando múltiplos critérios de filtro")
     @GetMapping("/filtrar")
     public ResponseEntity<List<Personagem>> filtrar(
@@ -166,6 +177,7 @@ public class PersonagemController {
         return ResponseEntity.ok(personagens);
     }
     
+    // Verifica se existe um personagem com o nome especificado
     @Operation(summary = "Verificar existência de personagem", description = "Verifica se existe um personagem com o nome especificado")
     @GetMapping("/existe/{nome}")
     public ResponseEntity<Boolean> existePorNome(
