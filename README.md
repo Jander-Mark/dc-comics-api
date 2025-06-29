@@ -75,6 +75,7 @@ dc-heroes-fullstack/
 │   │       │       ├── DcHeroesApiApplication.java
 │   │       │       ├── controller/
 │   │       │       ├── model/
+│   │       │       │   └─enums/
 │   │       │       ├── repository/
 │   │       │       ├── service/
 │   │       │       └── config/
@@ -124,17 +125,27 @@ A aplicação backend segue o padrão MVC (Model-View-Controller) com as seguint
 | nome | String | Nome do personagem | Sim |
 | nomeReal | String | Nome real do personagem | Não |
 | origem | String | Local de origem | Não |
+| universo | String | Universo de Origem | Não
 | poderes | String | Lista de poderes | Não |
 | afiliacao | String | Afiliação (ex: Liga da Justiça) | Não |
 | primeiraAparicao | String | Ano da primeira aparição | Não |
 | status | StatusPersonagem | Status atual (ATIVO/INATIVO/MORTO) | Sim |
 | descricao | String | Descrição detalhada | Não |
+| alinhamento | Alinhamento | Alinhamento moral do personagem | Sim |
+| imagemUrl | String | Caminho relativo da imagem | Não |
 
 ### Enum StatusPersonagem
 
 -   `ATIVO` - Personagem ativo
 -   `INATIVO` - Personagem inativo
 -   `MORTO` - Personagem morto
+
+### Enum Alinhamento
+
+- `HERÓI` - Herói
+- `VILÃO` - Vilão
+- `ANTI_HERÓI` - Anti-Herói
+- `NEUTRO` - Neutro
 
 ## 🔧 Pré-requisitos
 
@@ -162,7 +173,7 @@ Siga os passos abaixo para configurar e executar a aplicação completa.
 ### 1. Clone o repositório
 
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/Jander-Mark/dc-comics-api
 cd dc-heroes-fullstack
 ```
 
@@ -268,6 +279,7 @@ A API possui documentação automática gerada pelo Swagger/OpenAPI 3. Para aces
 Cada card exibe:
 -   **Nome** e **Nome Real**
 -   **Status** com badge colorido
+-   **Alinhamento** com badge colorido
 -   **Origem** e **Afiliação**
 -   **Primeira Aparição**
 -   **Poderes** (resumido)
@@ -278,6 +290,12 @@ Cada card exibe:
 -   **Ativo**: Verde (bg-green-100 text-green-800)
 -   **Inativo**: Amarelo (bg-yellow-100 text-yellow-800)
 -   **Morto**: Vermelho (bg-red-100 text-red-800)
+
+### Cores por Alinhamento
+- **Herói**: Azul
+- **Vilão**: Rosa/Vinho
+- **Anti-Herói**: Roxo
+- **Neutro**: Cinza
 
 ## 🌐 Integração com API (Frontend)
 

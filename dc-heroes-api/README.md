@@ -40,6 +40,8 @@ dc-heroes-api/
 │       │       │   ├── PersonagemController.java
 │       │       │   └── GlobalExceptionHandler.java
 │       │       ├── model/
+│       │       │   └──enums/
+│       │       │      ├──Alinhamento.java 
 │       │       │   ├── Personagem.java
 │       │       │   └── StatusPersonagem.java
 │       │       ├── repository/
@@ -74,17 +76,28 @@ A aplicação segue o padrão MVC (Model-View-Controller) com as seguintes camad
 | nome | String | Nome do personagem | Sim |
 | nomeReal | String | Nome real do personagem | Não |
 | origem | String | Local de origem | Não |
+| universo | String | Universo de Origem | Não
 | poderes | String | Lista de poderes | Não |
 | afiliacao | String | Afiliação (ex: Liga da Justiça) | Não |
 | primeiraAparicao | String | Ano da primeira aparição | Não |
 | status | StatusPersonagem | Status atual (ATIVO/INATIVO/MORTO) | Sim |
 | descricao | String | Descrição detalhada | Não |
+| alinhamento | Alinhamento | Alinhamento moral do personagem | Sim |
+| imagemUrl | String | Caminho relativo da imagem | Não |
+
 
 ### Enum StatusPersonagem
 
 - `ATIVO` - Personagem ativo
 - `INATIVO` - Personagem inativo
 - `MORTO` - Personagem morto
+
+### Enum Alinhamento
+
+- `HERÓI` - Herói
+- `VILÃO` - Vilão
+- `ANTI_HERÓI` - Anti-Herói
+- `NEUTRO` - Neutro
 
 ## 🔧 Pré-requisitos
 
@@ -181,6 +194,8 @@ curl -X POST "http://localhost:8080/api/personagens" \
     "primeiraAparicao": "1971",
     "status": "ATIVO",
     "descricao": "Arquiteto que se tornou Lanterna Verde"
+    "imagemUrl": "/uploads/superman.jpg",
+    "alinhamento": "HEROI"
   }'
 ```
 
@@ -198,6 +213,8 @@ curl -X PUT "http://localhost:8080/api/personagens/1" \
     "primeiraAparicao": "1938",
     "status": "ATIVO",
     "descricao": "O Último Filho de Krypton, atualizado"
+    "imagemUrl": "/uploads/superman.jpg",
+    "alinhamento": "HEROI"
   }'
 ```
 
