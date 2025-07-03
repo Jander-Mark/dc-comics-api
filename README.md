@@ -383,3 +383,5 @@ A API está configurada para aceitar requisições de qualquer origem (`spring.w
 ---
 
 **Desenvolvido usando Spring Boot e React**
+
+Desenvolvido por Jander Mark e Jhonata Pontes
